@@ -1,3 +1,3 @@
 通过Bootstrap编写的网址导航页面
-纯html代码，通过Bootstrap CDN引用CSS样式
+纯html代码，通过Bootstrap CDN引用Bootstrap V3 CSS样式
 用于公司内部网站导航
