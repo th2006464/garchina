@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <html lang="en">
-    <!-- 版本更新记录.Fox.Tang -->
-    <!-- 0612加入模态框 -->
-    <!-- 0612加入模态框-公告板 -->
-    <!-- 0310本次修复IE无法超链接的问题 -->
-    <!-- 0310本次增加了上方信息栏0310 -->
     
     <head>
       <meta charset="UTF-8">
@@ -29,11 +24,22 @@
           s.parentNode.insertBefore(hm, s);
         })();</script>
       <!-- 默认弹出模态框脚本开始 -->
-      <script type="text/javascript">$(function() {
-          $("#myModal").modal({ < !--控制是否自动弹出,
-            true为开启,
-            其他为关闭-->keyboard: true2
-          });
+      <script type="text/javascript">$(document).ready(function() {
+          var now = new Date().getTime(); // 获取当前时间戳
+          var lastShownTime = localStorage.getItem("modalLastShownTime") || 0; // 读取上次弹窗的时间
+          var modalEnabled = localStorage.getItem("modalEnabled") || "true4444"; // 读取模态框是否开启
+          // 计算时间间隔是否超过 4 小时（7200000 毫秒）
+          if (modalEnabled === "true" && (now - lastShownTime) > 7200000) {
+            $("#myModal").modal({
+              keyboard: true // 允许键盘 ESC 关闭
+            });
+
+            // 当模态框关闭时，记录当前时间戳
+            $("#myModal").on("hidden.bs.modal",
+            function() {
+              localStorage.setItem("modalLastShownTime", new Date().getTime());
+            });
+          }
         });</script>
       <!-- 默认弹出模态框脚本结束 --></head>
     
@@ -45,14 +51,14 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <!-- 模态框标题 -->
-              <h3 class="modal-title" id="myModalLabel">重&nbsp&nbsp要&nbsp&nbsp信&nbsp&nbsp息&nbsp&nbsp公&nbsp&nbsp告&nbsp&nbsp2022/09/16</h3>
+              
               <!-- 模态框标题结束 --></div>
             <!-- 模态框内容 -->
             <div class="modal-body">
               <h4>
                 <div class="modal-body">
                   <!-- 图片内容发布链接 -->
-                  <img src="https://pic.imgdb.cn/item/6323c92a16f2c2beb188d5ed.jpg" alt="" style="width:100%;"></div>
+                  <iframe src="https://www.garchina.com/systemstatus.html" style="width:100%; height:820px; border:none; "></iframe>
                 <div>
                   <br>
                   <!-- 下方超链接 -->
@@ -82,10 +88,10 @@
                       <span style="color:red;font-weight:bold;">需链接VPN</span>: https://www.garchina.com</strong></h2>
                   <br>
                   <h3>
-                    <strong>
-                      💡<span style="color:red;font-weight:bold;">Ctrl+D收藏此网页</span>，如有任何问题，请发邮件到中国区IT团队</strong></h3>
-                  <h3>
-                    📧<strong>CN IT Support &lt;CN_IT_Support@sinarmas-agri.com&gt;</strong></h3>
+                    <strong>💡
+                      <span style="color:red;font-weight:bold;">Ctrl+D收藏此网页</span>，如有任何问题，请发邮件到中国区IT团队</strong></h3>
+                  <h3>📧
+                    <strong>CN IT Support &lt;CN_IT_Support@sinarmas-agri.com&gt;</strong></h3>
                 </div>
               </div>
             </div>
@@ -101,12 +107,12 @@
                               <span style="color:red;font-weight:bold;">[A]</span>公司常用系统</h3></div>
                           <div class="panel-body">
                             <p>
-                              <a href="https://wd3.myworkday.com/goldenagri/d/home.htmld" class="btn btn-info btn-sm btn-block">⛱️Workday请休假系统</a></p>
+                              <a href="https://wd3.myworkday.com/goldenagri/d/home.htmld" class="btn btn-info btn-sm btn-block">🟢Workday请休假系统</a></p>
                             <p>
                               <a href="https://mssp-prd.sinarmas-agri.com/sites/CRQ/SitePages/Home.aspx" class="btn btn-info btn-sm btn-block">集团CRQ系统</a></p>
                             <p>
                               <!-- 弹窗按钮名称定义 -->
-                              <button class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#sysModaltpm">📊销售TPM系统</button>
+                              <button class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#sysModaltpm">🟢销售TPM系统</button>
                               <!-- 弹窗开始 -->
                               <div class="modal fade" id="sysModaltpm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -115,7 +121,7 @@
                                       <h4 class="modal-title" id="myModalLabel">注意事项</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>
                                     <div class="modal-body">
-                                      <img src="https://pic.imgdb.cn/item/61ee03572ab3f51d91e4e0b9.png" alt="" style="width:100%;">
+                                      <img src="https://www.garchina.com/img/tpm.png" alt="" style="width:100%;">
                                       <div>
                                         <br>
                                         <a href="http://crmprd.sinarmas-agri.com:1080/sap(bD16aCZjPTE2OCZkPW1pbg==)/bc/bsp/sap/crm_ui_start/default.htm" class="btn btn-success btn-lg pull-left">我已知晓 , 继续访问</a>
@@ -133,7 +139,7 @@
                             <p>
                               <a href="https://mdgprdapps.sinarmas-agri.com:8001/nwbc/" class="btn btn-info btn-sm btn-block">主数据MDG系统</a></p>
                             <p>
-                              <a href="https://oa.garchina.com/" class="btn btn-info btn-sm btn-block">💡China OA系统(Kube OA)</a></p>
+                              <a href="https://oa.garchina.com/" class="btn btn-info btn-sm btn-block">🟢China OA系统(Kube OA)</a></p>
                             <p>
                               <a href="http://www.sinarmas-agri.com.cn/" class="btn btn-info btn-sm btn-block">金光中国企业门户</a></p>
                             <p>
@@ -153,7 +159,7 @@
                             <p>
                               <a href="https://www.garchina.com/iisadmpwd/" class="btn btn-info btn-sm btn-block">💻电脑密码更新(域内用户)</a></p>
                             <p>
-                              <a href="https://www.garchina.com/change.html" class="btn btn-info btn-sm btn-block">📮Sinarmas账号密码更新</a></p>
+                              <a href="https://www.garchina.com/change.html" class="btn btn-info btn-sm  btn-block">📮Sinarmas账号密码更新</a></p>
                             <p>
                               <a href="https://www.garchina.com/unlock.html" class="btn btn-info btn-sm btn-block">🔒Sinarmas账号密码解锁</a></p>
                             <p>
@@ -162,7 +168,7 @@
                               <a href="http://app2.garchina.com/" class="btn btn-info btn-sm btn-block">🔍老OA系统(仅供查询)</a></p>
                             <p>
                               <!-- 弹窗按钮名称定义 -->
-                              <button class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#accsys01">🔒GRC系统(SAP解锁)</button>
+                              <button class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#accsys01">GRC系统(SAP解锁)</button>
                               <!-- 弹窗开始 -->
                               <div class="modal fade" id="accsys01" tabindex="-1" role="dialog" aria-labelledby="accsys01" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -171,7 +177,7 @@
                                       <h4 class="modal-title" id="accsys01">注意事项</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>
                                     <div class="modal-body">
-                                      <img src="https://pic.downk.cc/item/5f14edc514195aa59411c3a6.png" alt="" style="width:100%;">
+                                      <img src="https://www.garchina.com/img/grc.png" alt="" style="width:100%;">
                                       <div>
                                         <br>
                                         <a href="https://smartgrcprd01.sinarmas-agri.com/nwbc?sap-language=ZH" class="btn btn-success btn pull-left">我已知晓 , 继续访问</a>
@@ -216,7 +222,7 @@
                                       <h4 class="modal-title" id="myModal5">外网访问共享盘</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>
                                     <div class="modal-body">
-                                      <img src="https://pic.imgdb.cn/item/62395caa27f86abb2a030001.png" alt="" style="width:100%;">
+                                      <img src="https://www.garchina.com/img/smb.png" alt="" style="width:100%;">
                                       <div></div>
                                     </div>
                                     <div class="modal-footer">
@@ -227,8 +233,7 @@
                               <!-- /.modal -->
                               <!-- 外网访问共享盘 --></p>
                             <p>
-                              <a href="https://wwzx.lanzn.com/ikasL2n34z8b" class="btn btn-info btn-sm btn-block">💬微信缓存清理</a>
-                            </p>
+                              <a href="https://wwzx.lanzn.com/ikasL2n34z8b" class="btn btn-info btn-sm btn-block">💬微信缓存清理</a></p>
                             <p>
                               <!-- 远程办公指南 -->
                               <button class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#myModal4">🚀远程办公指南</button>
@@ -251,7 +256,7 @@
                               <!-- /.modal -->
                               <!-- 更多IT常见问题处理指南弹窗结束 --></p>
                             <p>
-                              <a href="https://yuanbao.tencent.com/" class="btn btn-success btn-sm btn-block">🤖腾讯DeepSeek联网满血版</a></div>
+                              <a href="https://www.garchina.com/systemstatus.html" class="btn btn-info btn-sm btn-block">📡系统状态</a></div>
                           <div class="panel-footer"></div>
                         </div>
                       </div>
@@ -278,7 +283,7 @@
                                       <h4 class="modal-title" id="myModalLabel">注意事项</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>
                                     <div class="modal-body">
-                                      <img src="https://pic.downk.cc/item/5ee6dbf1c2a9a83be59fdbd5.png" alt="" style="width:100%;">
+                                      <img src="https://www.garchina.com/img/sapconfig.png" alt="" style="width:100%;">
                                       <div>
                                         <br>
                                         <a href="https://wwzx.lanzn.com/i6VZq2n32bob" class="btn btn-success btn-block btn pull-right">下载配置文件</a></br>
@@ -302,7 +307,7 @@
                                       <h4 class="modal-title" id="softModalLabel">使用说明</h4>
                                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></div>
                                     <div class="modal-body">
-                                      <img src="https://pic.imgdb.cn/item/62aadf2d0947543129caa39c.png" alt="" style="width:100%;">
+                                      <img src="https://www.garchina.com/img/sunflower.png" alt="" style="width:100%;">
                                       <div>
                                         <br>
                                         <a href="https://www.garchina.com/SunloginClientSOS_1.1.0_x64.exe" class="btn btn-block btn-success btn-lg">我已知晓 , 进入下载</a></br>
@@ -315,7 +320,7 @@
                                 <!-- /.modal-dialog --></div>
                               <!-- /.modal -->
                               <!-- 远程协助软件弹窗结束 --></p>
-                                                        <p>
+                            <p>
                               <div style="display: flex; width: 100%;">
                                 <!-- 左侧按钮 -->
                                 <a href="https://tool.browser.qq.com/" class="btn btn-info btn-sm" style="flex: 1; border-top-right-radius: 0; border-bottom-right-radius: 0;">在线工具箱</a>
@@ -324,8 +329,16 @@
                                 <!-- 右侧按钮 -->
                                 <a href="https://zhimei58.lanzoup.com/iVgMI0yrz4de" class="btn btn-info btn-sm" style="flex: 1; border-top-left-radius: 0; border-bottom-left-radius: 0;">大文件清理</a></div>
                             </p>
-                            <p>
-                              <a href="https://www.wenshushu.cn/" class="btn btn-info btn-sm btn-block">文件传输助手</a></p>
+                           
+							  <p>
+                              <div style="display: flex; width: 100%;">
+                                <!-- 左侧按钮 -->
+                                <a href="https://www.garchina.com/s1.html" class="btn btn-warning btn-sm" style="flex: 1; border-top-right-radius: 0; border-bottom-right-radius: 0;">S1安全软件</a>
+                                <!-- 分割间距 -->
+                                <div style="width: 1px;"></div>
+                                <!-- 右侧按钮 -->
+                                <a href="https://wwm.lanzn.com/imNmz24m3s5a" class="btn btn-info btn-sm" style="flex: 1; border-top-left-radius: 0; border-bottom-left-radius: 0;">SEP卸载清理</a></div>
+                            </p>
                           </div>
                           <div class="panel-footer"></div>
                         </div>
